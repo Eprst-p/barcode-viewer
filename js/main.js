@@ -1,4 +1,3 @@
-console.log('Im here');
 
 const submitBtn = document.querySelector('.code-text-btn');
 
