@@ -35,4 +35,9 @@ body {
 
   .code-text-btn {
     margin-top: 20px;
+    height: 40px;
+    background-color: rgba(13, 212, 13, 0.774);
+    text-transform: uppercase;
+    font-size: 12px;
+    font-weight: 600;
   }
