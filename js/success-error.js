@@ -6,7 +6,6 @@ const onSuccess = () => {
 
 const onError = () => {
     console.log('Error');
-    alert('Error');
 }
 
 const onLoadData = () => {
