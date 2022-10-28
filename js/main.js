@@ -1,65 +1,28 @@
+import {onSuccess, onError, onLoadData} from './success-error';
+import {getData} from './server-fetchs';
+import { changeUrl } from './change-img-url';
+import { openNewWindow } from './window-pdf';
 
 const submitBtn = document.querySelector('.code-text-btn');
 const codeTextInput = document.querySelector('.code-text-input');
-
-
-const onSuccess = () => {
-    console.log('fcking OK!!!');
-    alert('fcking OK!!!');
-}
-
-const onError = () => {
-    console.log('Error');
-    alert('Error');
-}
-
-const onLoadData = () => {
-    console.log('загружено!');
-    alert('что то сделать с загруженым дерьмом');
-}
-
-
-const sendData = (onSuccess, onError, codeText) => fetch(
-    'https://24.javascript.pages.academy/kekstagram',
-    {
-      method: 'POST',
-      body: codeText,
-    },
-  )
-    .then((response) => {
-      if (response.ok) {
-        onSuccess();
-        //тут должнен быть запрос на лоад с сервера, по идее
-      } else {
-        onError();
-      }
-    })
-    .catch(() => {
-      onError();
-    });
-
-const getData = (onSucces, onLoadData, onError) => {
-    fetch('https://24.javascript.pages.academy/kekstagram/data')
-        .then((response) => response.json())
-        .then((data) => {
-        onSucces(data);
-        allPhotos = data;
-        })
-        .then(() => {
-        onLoadData();
-        })
-        .catch(() => {
-        onError();
-        });
-    };
+const imgWindow = document.querySelector('.img-window');
+const closeBtn = document.querySelector('.close-btn');
 
 
 const onSubmitBtnClick = () => {
     const dataToSend = {
         barcode: codeTextInput.value
     }
-    sendData(onSuccess, onError, JSON.stringify(dataToSend));
+    getData(onSuccess, onLoadData, onError, JSON.stringify(dataToSend));
+    imgWindow.style.visibility = "visible";
+    changeUrl();
+    openNewWindow();
 }
 
 submitBtn.addEventListener('click', onSubmitBtnClick);
 
+const onCloseBtnClick = () => {
+  imgWindow.style.visibility = "hidden";
+}
+
+closeBtn.addEventListener('click', onCloseBtnClick);
