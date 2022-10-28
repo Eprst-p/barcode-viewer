@@ -1,6 +1,7 @@
 import {onSuccess, onError, onLoadData} from './success-error';
-import {sendData} from './server-fetchs';
+import {getData} from './server-fetchs';
 import { changeUrl } from './change-img-url';
+import { openNewWindow } from './window-pdf';
 
 const submitBtn = document.querySelector('.code-text-btn');
 const codeTextInput = document.querySelector('.code-text-input');
@@ -12,9 +13,10 @@ const onSubmitBtnClick = () => {
     const dataToSend = {
         barcode: codeTextInput.value
     }
-    sendData(onSuccess, onError, JSON.stringify(dataToSend));
+    getData(onSuccess, onLoadData, onError, JSON.stringify(dataToSend));
     imgWindow.style.visibility = "visible";
     changeUrl();
+    openNewWindow();
 }
 
 submitBtn.addEventListener('click', onSubmitBtnClick);
