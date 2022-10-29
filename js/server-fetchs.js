@@ -1,4 +1,8 @@
 import { serverApi } from "../utils/server-api";
+import { response } from '../mocks/response';
+
+let dataFromServer = {};
+dataFromServer = JSON.parse(response);
 
 const getData = (onSucces, onLoadData, onError, codeText) => {
     fetch(serverApi.GET, 
@@ -19,4 +23,4 @@ const getData = (onSucces, onLoadData, onError, codeText) => {
       });
     };
 
-export {getData}
+export {getData, dataFromServer}

@@ -1,9 +1,9 @@
 import {onSuccess, onError, onLoadData} from './success-error';
 import {getData} from './server-fetchs';
-import { changeUrl } from './change-img-url';
+import { showInModal } from './show-in-modal';
 import { openNewWindow } from '../utils/open-new-window';
 import { createImgHrefs } from './create-img-hrefs';
-import pdfUrl from '../mocks/pdf/cert.pdf';
+import { dataFromServer } from './server-fetchs';
 
 
 const submitBtn = document.querySelector('.code-text-btn');
@@ -20,9 +20,9 @@ const onSubmitBtnClick = () => {
     getData(onSuccess, onLoadData, onError, JSON.stringify(dataToSend));
     imgWindow.style.visibility = "visible";
     imgListField.style.visibility = "visible";
-    changeUrl();
-    openNewWindow(pdfUrl);
-    createImgHrefs(6)
+    showInModal(dataFromServer.images[0]);
+    openNewWindow(dataFromServer.images[0]);
+    createImgHrefs()
 }
 
 submitBtn.addEventListener('click', onSubmitBtnClick);

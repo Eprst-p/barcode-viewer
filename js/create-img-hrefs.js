@@ -1,23 +1,27 @@
-import defaultImgUrl from '../mocks/img/default.jpg';
+import { dataFromServer } from './server-fetchs';
 import { openNewWindow } from '../utils/open-new-window';
+import { showInModal } from './show-in-modal';
 
-const createImgHrefs = (imgAmount) => {
+const images = dataFromServer.images;
+
+const createImgHrefs = () => {
     const imgHrefTemplate = document.querySelector('#img-href-template').content;
     const imgHrefElement = imgHrefTemplate.querySelector('.img-href');
     const imgHrefsContainer = document.querySelector('.img-list-fieldset');
     const imgHrefFragment = document.createDocumentFragment();
 
-    for (let i=0; i<imgAmount; i++) {
+    images.forEach((imgUrl) => {
         const current = imgHrefElement.cloneNode(true);
-        current.href = defaultImgUrl;
-        current.textContent = defaultImgUrl;
+        current.href = imgUrl;
+        current.textContent = imgUrl;
         const onHrefClick = (evt) => {
             evt.preventDefault();
-            openNewWindow(defaultImgUrl);
+            openNewWindow(imgUrl);
+            showInModal(imgUrl);
         }
         current.addEventListener('click', onHrefClick);
         imgHrefFragment.appendChild(current);
-    }
+    })
     imgHrefsContainer.appendChild(imgHrefFragment);
 }
 
