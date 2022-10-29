@@ -1,9 +1,10 @@
 import {onSuccess, onError, onLoadData} from './success-error';
 import {getData} from './server-fetchs';
-import { showInModal } from './show-in-modal';
+import { showInModal } from '../utils/show-in-modal';
 import { openNewWindow } from '../utils/open-new-window';
 import { createImgHrefs } from './create-img-hrefs';
 import { dataFromServer } from './server-fetchs';
+import { clearImgHrefs } from './clear-img-hrefs';
 
 
 const submitBtn = document.querySelector('.code-text-btn');
@@ -21,8 +22,9 @@ const onSubmitBtnClick = () => {
     imgWindow.style.visibility = "visible";
     imgListField.style.visibility = "visible";
     showInModal(dataFromServer.images[0]);
-    openNewWindow(dataFromServer.images[0]);
-    createImgHrefs()
+    //openNewWindow(dataFromServer.images[0]);
+    clearImgHrefs();
+    createImgHrefs();
 }
 
 submitBtn.addEventListener('click', onSubmitBtnClick);

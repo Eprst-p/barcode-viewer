@@ -1,6 +1,6 @@
 import { dataFromServer } from './server-fetchs';
 import { openNewWindow } from '../utils/open-new-window';
-import { showInModal } from './show-in-modal';
+import { showInModal } from '../utils/show-in-modal';
 
 const images = dataFromServer.images;
 
