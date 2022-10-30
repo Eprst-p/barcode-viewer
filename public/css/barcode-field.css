@@ -41,6 +41,11 @@
     color:#ffffff;
   }
 
+  .img-list-title {
+      text-transform: none; 
+      padding: 5px;
+  }
+
   .img-list-fieldset {
     display: flex;
     flex-direction: column;
@@ -51,9 +56,25 @@
     visibility: hidden;
   }
 
+  .img-href-block {
+    display: flex;
+
+  }
+
   .img-href {
-    height: 20px;
-    color: #ffffff;
-    text-decoration: underline;
-    padding-top: 10px;
+    max-width: 270px;
+    max-height: 230px;
+    margin-top: 10px;
+    border: 3px solid rgba(122, 131, 122, 0.822);
+  }
+
+  .open-new-window-btn {
+    width: 30px;
+    height: 30px;
+    margin-top: 10px;
+    margin-left: 5px;
+  }
+
+  .open-new-window-btn:hover {
+    background-color: rgba(150, 151, 150, 0.856);
   }
