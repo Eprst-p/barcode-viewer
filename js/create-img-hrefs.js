@@ -7,6 +7,7 @@ import openWindowIcon from '../public/icons/open-new-window.png'
 
 const images = dataFromServer.images;
 
+
 const createImgHref = (element, url) => {
     element.src = url;
     const onImgHrefClick = (evt) => {

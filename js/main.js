@@ -5,6 +5,7 @@ import { openNewWindow } from '../utils/open-new-window';
 import { createImgHrefs } from './create-img-hrefs';
 import { dataFromServer } from './server-fetchs';
 import { clearImgHrefs } from './clear-img-hrefs';
+import { extensions } from '../utils/constants';
 
 
 const submitBtn = document.querySelector('.code-text-btn');
@@ -19,10 +20,16 @@ const onSubmitBtnClick = () => {
         barcode: codeTextInput.value
     }
     getData(onSuccess, onLoadData, onError, JSON.stringify(dataToSend));
-    imgWindow.style.visibility = "visible";
     imgListField.style.visibility = "visible";
-    showInModal(dataFromServer.images[0]);
-    //openNewWindow(dataFromServer.images[0]);
+    const firstFileExt = dataFromServer.images[0].slice(-3);
+    switch (firstFileExt) {
+      case extensions.PDF:
+         openNewWindow(dataFromServer.images[0]);
+         break;
+      default:
+        showInModal(dataFromServer.images[0]);
+        break;
+    }
     clearImgHrefs();
     createImgHrefs();
 }
