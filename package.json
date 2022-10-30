@@ -5,7 +5,8 @@
     "description": "страничка для считывания штрихкодов",
     "scripts": {
       "build": "webpack --mode development",
-      "start": "webpack serve --mode development --open"
+      "start": "webpack serve --mode development --open",
+      "publish": "webpack --mode production"
     },
     "devDependencies": {
       "eslint": "8.26.0",

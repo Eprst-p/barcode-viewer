@@ -1,6 +1,7 @@
 const path = require('path');
 
-module.exports = {
+module.exports = [{
+  mode: 'development',
   entry: './js/main.js',
   output: {
     filename: 'bundle.js',
@@ -23,4 +24,29 @@ module.exports = {
         },
     ]
   }
-};
+},
+{
+  mode: 'production',
+  entry: './js/main.js',
+  output: {
+    filename: 'bundleProd.js',
+    path: path.resolve('C:\\production', 'public/js'),
+    assetModuleFilename: 'images/[hash][ext][query]'
+  },
+  devtool: 'source-map',
+  devServer: {
+    hot: false
+  },
+  module: {
+    rules: [
+        {
+          test: /\.css$/i,
+          use: ['style-loader', 'css-loader']
+        },
+        {
+          test: /\.(png|gif|jpg|jpeg|ico|pdf)$/,
+          type: 'asset/resource'
+        },
+    ]
+  }
+}];

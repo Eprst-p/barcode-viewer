@@ -1,5 +1,5 @@
 import {onSuccess, onError, onLoadData} from './success-error';
-import {getData} from './server-fetchs';
+import {getData, sendData} from './server-fetchs';
 import { showInModal } from '../utils/show-in-modal';
 import { openNewWindow } from '../utils/open-new-window';
 import { createImgHrefs } from './create-img-hrefs';
@@ -20,6 +20,7 @@ const onSubmitBtnClick = () => {
         barcode: codeTextInput.value
     }
     getData(onSuccess, onLoadData, onError, JSON.stringify(dataToSend));
+    sendData(onSuccess, onError, JSON.stringify(dataToSend));
     imgListField.style.visibility = "visible";
     const firstFileExt = dataFromServer.images[0].slice(-3);
     switch (firstFileExt) {

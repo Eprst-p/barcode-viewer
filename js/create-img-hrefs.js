@@ -40,11 +40,9 @@ const createImgHrefs = () => {
         const ext = imgUrl.slice(-3);
         switch (ext) {
             case extensions.PDF :
-                console.log('pdf-logick', ext);
                 createPdfHref(img, imgUrl);
                 break;
             default :
-                console.log('img-logick', ext);
                 createImgHref(img, imgUrl);
                 break;
         }
